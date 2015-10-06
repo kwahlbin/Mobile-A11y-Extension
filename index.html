@@ -1,98 +1,293 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Mobile Accessibility WCAG Extension</title>
-    <meta charset='utf-8'>
-    <link rel="stylesheet" type="text/css" href="additional.css"/>
-    <script src='https://www.w3.org/Tools/respec/respec-w3c-common'
-            async class='remove'></script>
-    <script class='remove'>
-      var respecConfig = {
-          // specification status (e.g. WD, LCWD, WG-NOTE, etc.). If in doubt use ED.
-          specStatus:           "ED",
-          
-          // the specification's short name, as in http://www.w3.org/TR/short-name/
-          shortName:            "mobile-accessibility-extension",
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+body {
+	padding: 2em 1em 2em 70px;
+	margin: 0;
+	font-family: sans-serif;
+	color: black;
+	background: white;
+	background-position: top left;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+:link {
+	color: #00C;
+	background: transparent
+}
+:visited {
+	color: #609;
+	background: transparent
+}
+a:active {
+	color: #C00;
+	background: transparent
+}
+a:link img, a:visited img {
+	border-style: none
+} /* no border on img links */
+a img {
+	color: white;
+}        /* trick to hide the border in Netscape 4 */
+@media all {                   /* hide the next rule from Netscape 4 */
+a img {
+	color: inherit;
+}    /* undo the color change above */
+}
+th, td { /* ns 4 */
+	font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+	text-align: left
+}
+/* background should be transparent, but WebTV has a bug */
+h1, h2, h3 {
+	color: #005A9C;
+	background: white
+}
+h1 {
+	font: 170% sans-serif
+}
+h2 {
+	font: 140% sans-serif
+}
+h3 {
+	font: 120% sans-serif
+}
+h4 {
+	font: bold 100% sans-serif
+}
+h5 {
+	font: italic 100% sans-serif
+}
+h6 {
+	font: small-caps 100% sans-serif
+}
+.hide {
+	display: none
+}
+div.head {
+	margin-bottom: 1em
+}
+div.head h1 {
+	margin-top: 2em;
+	clear: both
+}
+div.head table {
+	margin-left: 2em;
+	margin-top: 2em
+}
+p.copyright {
+	font-size: small
+}
+p.copyright small {
+	font-size: small
+}
+ @media screen {  /* hide from IE3 */
+a[href]:hover {
+	background: #ffa
+}
+}
+pre {
+	margin-left: 2em
+}
+/*
+p {
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+}
+*/
+dt, dd {
+	margin-top: 0;
+	margin-bottom: 0
+} /* opera 3.50 */
+dt {
+	font-weight: bold
+}
+ul.toc, ol.toc {
+	list-style: disc;		/* Mac NS has problem with 'none' */
+	list-style: none;
+}
+body {
+	max-width: 75em;
+}
+code {
+	font-family: monospace;
+}
+div.constraint, div.issue, div.note, div.notice, div.example {
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+	margin-top: 0;
+	padding-top:0;
+}
+dl div.note, dl div.example {
+	margin-top: 0.25em;
+	margin-left: 0.5em;
+}
+ol.enumar {
+	list-style-type: decimal;
+	margin-top: 0;
+	margin-bottom: .25em;
+}
+ol.enumla {
+	list-style-type: lower-alpha;
+}
+ol.enumlr {
+	list-style-type: lower-roman;
+}
+ol.enumua {
+	list-style-type: upper-alpha;
+}
+ol.enumur {
+	list-style-type: upper-roman;
+}
+div.div2 dl, dl.keyterms {
+	margin-left: 1.5em;
+}
+p, td {
+	line-height: 1.4;
+	margin-left: .5em;
+	color: #000;
+	background: inherit;
+	font-weight: normal;
+}
+li {
+	margin-top: 0;
+	margin-bottom: 0.25em;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+li p, dd p {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0
+}
+p.sctxt {
+	margin: 0.5em 0 0 0.5em;
+	padding: 0;
+}
+strong.sc-handle {
+	font-size: 1em;
+}
+dd.prefix p {
+	margin-bottom: 0;
+}
+div.head dt {
+	margin-top: 0.25em;
+}
+dt.label {
+	padding-top: .5em;
+}
+dd p {
+	margin-left: 0;
+}
+div.sc ul, div.sc ol, div.sc div.note, div.div3 ul, div.div3 ol {
+	display: block;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.principle {
+	padding: .5em;
+	border: solid #666666 1px;
+	background-color: #FFFFFF;
+	color: #000000;
+}
 
-          // if your specification has a subtitle that goes below the main
-          // formal title, define it here
-          // subtitle   :  "an excellent document",
+.mobile {
+	color: #800000; !important
+}
+/* If you place a comment immediately after a selector in a style sheet, IE 5 and earlier on Windows will ignore that selector.  */
+ 
+div.guideline/* */ {
+	border: solid #666666 1px;
+	background-color: #CFE8EF ! important;
+	padding: 0 .5em .5em .5em;
+	margin: 1em 0 0 0;
+	color: #000000;
+	position: relative;
+}
+div.guideline h3/* */ {
+	background-color: #CFE8EF ! important;
+	color: #000000;
+	margin-right: 14.5em;
+	margin-bottom: 0.5em;
+}
+ @media speech {
+h1, h2, h3 {
+	voice-stress: moderate;
+}
+.hide {
+	speak: none;
+}
+p.copyright {
+	voice-volume: x-soft;
+	voice-rate: x-fast;
+}
+dt {
+	pause-before: 63ms;
+}
+}
+.principle {
+	padding: .5em;
+	border: solid #666666 1px;
+	background-color: #FFFFFF;
+	color: #000000;
+}
+div.guideline h3 {
+	background-color: #CFE8EF ! important;
+	color: #000000;
+	margin-right: 14.5em;
+	margin-bottom: 0.5em;
+}
+body {
+	background-image: url(//www.w3.org/StyleSheets/TR/logo-ED);
+}
+</style>
+<title>DRAFT: Mobile Accessibility WCAG 2.0 Extension</title>
+</head>
 
-          // if you wish the publication date to be other than the last modification, set this
-          // publishDate:  "2009-08-06",
-
-          // if the specification's copyright date is a range of years, specify
-          // the start date here:
-          // copyrightStart: "2005"
-
-          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
-          // and its maturity status
-          // previousPublishDate:  "1977-03-15",
-          // previousMaturity:  "WD",
-
-          // if there a publicly available Editor's Draft, this is the link
-          edDraftURI:           "http://w3c.github.io/Mobile-A11y-Extension/",
-
-          // if this is a LCWD, uncomment and set the end of its review period
-          // lcEnd: "2009-08-05",
-
-          // editors, add as many as you like
-          // only "name" is required
-          editors:  [
-              {
-                  name:       "Michael Cooper"
-              },
-              {
-                  name:       "Kim Patch"
-              },
-              {
-                  name:       "Jeanne Spellman"
-              },
-               {
-                  name:       "Kathy Wahlbin"
-              },
-              
-          ],
-          
-          // name of the WG
-          wg:           "Mobile Accessibililty Task Force",
-          
-          // URI of the public WG page
-          wgURI:        "http://www.w3.org/WAI/GL/mobile-a11y-tf/",
-          
-          // name (without the @w3c.org) of the public mailing to which comments are due
-          wgPublicList: "public-mobile-a11y-tf",
-          
-          // URI of the patent status for this WG, for Rec-track documents
-          // !!!! IMPORTANT !!!!
-          // This is important for Rec-track documents, do not copy a patent URI from a random
-          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
-          // Team Contact.
-          wgPatentURI:  "@@-needs-statement-of-joint-WGs",
-          // !!!! IMPORTANT !!!! MAKE THE ABOVE BLINK IN YOUR HEAD
-      };
-    </script>
-  </head>
-  <body>
-    <section id='abstract'>
-      <p>
-        The Mobile Accessibility Extension to WCAG 2.0 provides new guidelines, success criteria, and mobile Techniques that are an addition to Web Content Accessibility Guidelines (WCAG) 2.0. This extension does not replace WCAG 2.0. Where there are mobile Techniques that apply to WCAG, </p>
-    </section>
+<body>
+<h1>DRAFT: Mobile Accessibility WCAG 2.0 Extension</h1>
+<p><strong>This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</strong></p>
+<p>This page catalogs Mobile A11y Task Force proposed new mobile guidelines, success criteria and techniques. </p>
+<section id="toc">
+  <h2 id="h-toc">Table of Contents</h2>
+  <ul class="toc" role="directory" id="respecContents">
+    <li class="tocline"><a href="#perceivable" class="tocxref"><span class="secno">1. </span>Perceivable</a>
     
-    <section id='sotd'>
-      <p>
-        This is an early draft of a document that will become a First Public Working Draft (FPWD) of the WCAG Extension on Mobile Accessibility. 
-      </p>
-      <p>This document is intended to become a normative extension of <a href="http://www.w3.org/TR/WCAG20/">WCAG 2.0</a> and is part of a series of technical and educational documents published by the <a href="http://www.w3.org/WAI/">W3C Web Accessibility Initiative (WAI)</a>. </p>
-
-    </section>
-    
-    <section class="introductory">
-      <h2 id="intro">Introduction</h2>
-      <p>[to be drafted]</p>
-    </section>
-    
-    <section>
+    <ul class="toc"><li>1.1 <a href="#text-equiv">Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</a></li><li>1.2 <a href="#media-equiv">Provide alternatives for time-based media.</a></li><li>1.3 <a href="#content-structure-separation">Create content that can be presented in different ways (for example simpler layout) without losing information or structure.</a></li><li>1.4 <a href="#visual-audio-contrast">
+            Make it easier for users to see and hear content including separating foreground from background.
+          </a></li></ul>
+    </li>
+    <li class="tocline"><a href="#operable" class="tocxref"><span class="secno">2. </span>Operable</a> <ul class="toc"><li>2.1 <a href="#keyboard-operation">
+            Make all functionality available from a keyboard.
+          </a></li><li>2.2 <a href="#time-limits">
+            Provide users enough time to read and use content.
+          </a></li><li>2.3 <a href="#seizure">Do not design content in a way that is known to cause seizures.</a></li><li>2.4 <a href="#navigation-mechanisms">
+            Provide ways to help users navigate, find content, and determine where they are.
+          </a></li>
+          <li>2.5 <a href="#touch-navigation">Touch and Pointer: Make it easier for users to operate touch and pointer functionality. [MOBILE]</a> </li>
+          
+          </ul></li>
+    <li class="tocline"><a href="#understandable" class="tocxref"><span class="secno">3. </span>Understandable</a><ul class="toc"><li>3.1 <a href="#meaning">
+            Make text content readable and understandable.
+          </a></li><li>3.2 <a href="#consistent-behavior">
+            Make Web pages appear and operate in predictable ways.
+          </a></li><li>3.3 <a href="#minimize-error">
+            Help users avoid and correct mistakes.
+          </a></li>
+          <li>3.4 <a href="#flexible-orientation">Flexible Orientation: Ensure users can use the content in a device orientation [MOBILE]</a> </li>
+          <li>3.5 <a href="#distinguishable">Make interactive elements distinguishable  [MOBILE]</a></li>
+    </ul>
+    </li>
+    <li class="tocline"><a href="#robust" class="tocxref"><span class="secno">4. </span>Robust</a><ul class="toc"><li>4.1 <a href="#ensure-compat">Maximize compatibility with current and future user agents, including assistive technologies.</a></li></ul></li>
+   
+  </ul>
+</section>
+<section>
   <h2 class="principle" id="perceivable"> <span class="secno">1. </span>Perceivable</h2>
   <div class="guideline">
     <h3><a name="text-equiv" id="text-equiv"> </a> Guideline 1.1 Text Alternatives: Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</h3>
@@ -328,12 +523,5 @@
     <li><a rel="nofollow" href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M007">M007</a>: Supporting the characteristic properties of the platform (e.g. zoom, larger font, captions)</li>
   </ul>
 </section>
-    
-  <section class='appendix'>
-      <h2>Acknowledgements</h2>
-    <p>
-      Thanks to active members of the Task Force</p>
-      <p>Thanks to prior members of the Task Force</p>
-    </section>
-  </body>
+</body>
 </html>
