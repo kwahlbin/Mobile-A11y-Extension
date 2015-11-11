@@ -242,7 +242,9 @@ div.guideline h3 {
 	margin-right: 14.5em;
 	margin-bottom: 0.5em;
 }
-
+body {
+	background-image: url(//www.w3.org/StyleSheets/TR/logo-ED);
+}
 </style>
 <title>DRAFT: Mobile Accessibility WCAG 2.0 Extension</title>
 </head>
@@ -277,7 +279,7 @@ div.guideline h3 {
           </a></li><li>3.3 <a href="#minimize-error">
             Help users avoid and correct mistakes.
           </a></li>
-          <li>3.4 <a href="#flexible-orientation">Flexible Orientation: Ensure users can use the content in a device orientation [MOBILE]</a> </li>
+          <li>3.4 <a href="#flexible-orientation">Make content usable in device orientations [MOBILE]</a> </li>
           <li>3.5 <a href="#distinguishable">Make interactive elements distinguishable  [MOBILE]</a></li>
     </ul>
     </li>
@@ -409,9 +411,19 @@ div.guideline h3 {
     <h3><a name="navigation-mechanisms" id="touch-navigation"> </a> Guideline 2.5 Touch and Pointer: Make it easier for users to operate touch and pointer functionality. [MOBILE] </h3>
   </div>
   
-  <h4 class="sc-handle mobile">2.5.1 Touch: All functions available by touch (or button presses) are still available by touch (or button presses) after system assistive technology is turned on. (Level A) [MOBILE]</h4>
+  <h4 class="sc-handle mobile">2.5.1 Touch: All functions available by touch are still available by touch after system assistive technology that remaps touch gestures is turned on. (Level A) [MOBILE]</h4>
   <ul class="mobile">
-    <li><a rel="nofollow" href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M003">M003</a><strong> Touch Activation:</strong> Activating elements via the touchend event</li>
+    <li><strong>Techniques</strong>
+<ul type="circle">
+        <li>Using        standard one touch controls</li>
+         <li>Providing        touch access for custom controls</li>
+       </ul></li>
+       <li><strong>Failures</strong>
+<ul type="circle">
+        <li>Infinite        scroll gesture is not available with system screen reader</li>
+         <li>Component        can be opened but cannot be closed with touch when a system screen reader        is running</li>
+       </ul></li>
+  
   </ul>
 <h4 class="sc-handle mobile">2.5.2  No Swipe Trap: When touch input behavior is modified by built-in assistive technology so that touch focus can be moved to a component of the page using swipe gestures, then focus can be moved away from that component using swipe gestures or the user is advised of the method for moving focus away. (Level A) [MOBILE]</h4>
   
@@ -426,7 +438,7 @@ div.guideline h3 {
 <ul>
   <li><a href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M022"> M022</a> <strong>Spacing between elements</strong>. </li>
 </ul>
-<h4 class="sc-handle mobile">2.5.6 Device manipulation: When device manipulation gestures are provided, touch and keyboard operable alternative control options are available. [MOBILE]</h4>
+<h4 class="sc-handle mobile">2.5.6 Device manipulation: When device manipulation gestures are provided, touch and keyboard operable alternative control options are available. (Level AA) [MOBILE]</h4>
  <ul class="mobile">
    <li><a rel="nofollow" href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M010">M010</a>: Allowing users to interact using device buttons (e.g. arrow keys, ok button)</li>
  </ul>
@@ -474,7 +486,7 @@ div.guideline h3 {
   <h4 class="sc-handle">3.3.6 Error Prevention (All)</h4>
   
  <div class="guideline mobile">
-    <h3><a name="flexible-orientation" id="flexible-orientation"> </a>  Guideline 3.4 Flexible Orientation: Ensure users can use the content in a device orientation [MOBILE] </h3></div>
+    <h3><a name="flexible-orientation" id="flexible-orientation"> </a>  Guideline 3.4 Make content usable in  device orientations.[MOBILE] </h3></div>
     
   
   <h4 class="sc-handle mobile">3.4.1 Expose Orientation: Changes in orientation are programmatically exposed to ensure  assistive technology such as screen readers know the changes in layout. [MOBILE]</h4>
@@ -520,6 +532,9 @@ div.guideline h3 {
   <ul class="mobile">
     <li><a rel="nofollow" href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M007">M007</a>: Supporting the characteristic properties of the platform (e.g. zoom, larger font, captions)</li>
   </ul>
+  <div class="guideline">
+    <h3>Techniques with No Home</h3></div>
+  <p><a rel="nofollow" href="http://w3c.github.io/Mobile-A11y-TF-Note/Techniques/M003">M003</a><strong> Touch Activation:</strong> Activating elements via the touchend event</p>
 </section>
 </body>
 </html>
